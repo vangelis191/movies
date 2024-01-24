@@ -141,7 +141,7 @@ const MovieDetail = ({ params }: { params: { movieId: String } }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const moviesData = await getMovieById(params.movieId as string);
+        const moviesData = await getMovieById(params?.movieId as string);
         setMovie(moviesData);
 
       } catch (error) {
@@ -153,7 +153,7 @@ const MovieDetail = ({ params }: { params: { movieId: String } }) => {
 
   return (
     <MovieDetailStyle>
-      {/* <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" /> */}
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
       <div className="card-wrapper">
         <Link href="/">
           <div className="logo-wrapper">
@@ -174,7 +174,7 @@ const MovieDetail = ({ params }: { params: { movieId: String } }) => {
             <div className="release">Release Day - {movie?.release_date}</div>
             <div className="play">
               <span className="material-symbols-outlined">play_circle</span>
-              <span>Let's Play the Movie</span>
+              <div>Let's Play the Movie</div>
             </div>
           </div>
         </div>
