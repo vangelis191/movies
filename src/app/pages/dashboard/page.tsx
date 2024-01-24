@@ -2,10 +2,8 @@
 'use client';
 import { getAllMovies,getMovieImageById, searchMovies } from '@/app/api/movies';
 import MovieList from '@/app/components/movieList/MovieList';
-import SearchBar from '@/app/components/searchBar/SearchBar'
 import React, {  useEffect, useState } from 'react'
 import DashboardStyle from"./dashboard.style";
-import styled from "styled-components";
 import GlobalHeader from '@/app/components/globalHeader/GlobalHeader';
 
 import {Response} from "../../interfaces/Response"
@@ -40,10 +38,7 @@ export default function DashboardPage  (){
         console.error('Error fetching movies:', error);
       }
       };
-  
-      console.log(searchQuery);
-      console.log(movies);
-      
+        
       
     fetchData();
   }, [searchQuery,page]);

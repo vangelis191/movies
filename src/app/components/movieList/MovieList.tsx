@@ -188,7 +188,6 @@ export const MovieListStyle = styled.div`
 `;
 const MovieList: React.FC<MovieListProps> = ({ movies ,onPageChange}: MovieListProps) => {
   useEffect(() => {
-   console.log(movies);
    
   }, [movies]);
 

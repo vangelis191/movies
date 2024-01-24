@@ -67,8 +67,7 @@ const Paginator: React.FC<MoviesProps> = ({ total_pages,results,onPageChange }: 
 
 
   useEffect(() => {
-    console.log(currentPage);
-    
+       
   }, [currentPage]);
 
   

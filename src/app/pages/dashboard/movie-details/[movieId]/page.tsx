@@ -15,7 +15,8 @@ export const MovieDetailStyle = styled.div`
     margin: 20px;
     z-index: 1000;
     height: 30px;
-    font-size: 3rem;
+    font-size: 2rem;
+      background-color: white;
   }
   .card-wrapper {
     max-width: calc(100% - 20px);
@@ -142,7 +143,7 @@ const MovieDetail = ({ params }: { params: { movieId: String } }) => {
       try {
         const moviesData = await getMovieById(params.movieId as string);
         setMovie(moviesData);
-        console.log(moviesData);
+
       } catch (error) {
         console.error("Error fetching movies:", error);
       }

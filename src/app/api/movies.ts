@@ -1,3 +1,4 @@
+import { Response } from "../interfaces/Response";
 
 
 export const getAllMovies = async (page = 1) => {
@@ -10,7 +11,7 @@ export const getAllMovies = async (page = 1) => {
     };
     
     const res = await fetch(`https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=${page}`, options);
-    const movies:any = await res.json();
+    const movies:Response = await res.json();
 
    return movies;
 };
