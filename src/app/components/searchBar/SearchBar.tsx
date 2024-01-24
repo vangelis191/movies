@@ -34,13 +34,25 @@ export const GlobalHeaderStyle = styled.div`
       cursor: pointer;
     }
 
+    @media (max-width: 600px) {
+    .search-container {
+     left: 170px;
+    }
+  }
+
 `;
 
-const SearchBar = () => {
+interface SearchBarProps {
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const SearchBar: React.FC<SearchBarProps> = ({ setSearchQuery }) => {
   return (
     <GlobalHeaderStyle>
     <div className="search-container">
-        <input type="text" className="search-input" placeholder="Search..."></input>
+        <input type="text" className="search-input" placeholder="Search..."
+          onChange={(e) => setSearchQuery(e.target.value)}
+        ></input>
         <button className="search-button material-symbols-outlined">Search</button>
     </div>
     </GlobalHeaderStyle>

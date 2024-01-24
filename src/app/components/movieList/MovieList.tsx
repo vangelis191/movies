@@ -1,8 +1,13 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import Image from "next/image";
+import Paginator from "../paginator/paginator";
+import Link from "next/link";
+import {Response} from "../../interfaces/Response"
+
 interface MovieListProps {
-  movies: IMovies | undefined | any;
+  movies: Response | undefined;
+  onPageChange: (newPage: number) => void;
 }
 
 export const MovieListStyle = styled.div`
@@ -41,6 +46,7 @@ export const MovieListStyle = styled.div`
     font-size: 3rem;
     color: white;
     position: absolute;
+    left: 20px;
   }
 
   span {
@@ -70,17 +76,29 @@ export const MovieListStyle = styled.div`
     padding: 20px 40px;
     border-radius: 10px;
     margin: 0 0 20px 0;
+    overflow: hidden;
   }
   .mini-cards-wrapper {
-    display: flex;
-    justify-content: center;
+    display: grid;
+   grid-template-columns: repeat(6, 1fr); 
+   place-items: center;
+    overflow: hidden;
+    grid-gap: 0px;
   }
   .mini-card-wrapper {
     margin: 10px;
-    height: 300px;
-    width: 100px;
+    height: 400px;
+    width: 400px;
     border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
   }
+
+  .mini-card-wrapper:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+  }
+
   .image-background-wrapper {
     position: relative;
     height: 70%;
@@ -91,9 +109,12 @@ export const MovieListStyle = styled.div`
     flex-direction: column;
     position: relative;
   }
-  .mini-card-info{
+  .mini-card-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    top: 70px;
+    top: 40px;
   }
 
   .mini-card-title {
@@ -104,14 +125,71 @@ export const MovieListStyle = styled.div`
   .bg-color {
     color: yellow;
   }
-  h3{
-    margin: 0 220px;
+  .all-movies-titles {
     color: white;
+    margin: 0 20px;
   }
+
+@media only screen and (max-width: 2500px) {
+  .mini-cards-wrapper {
+
+    grid-template-columns: auto auto auto auto;
+  }
+
+  .mini-card-wrapper {
+    /* max-width: 150px; */
+    
+  }
+
+  @media only screen and (max-width: 1600px) {
+  .mini-cards-wrapper {
+
+    grid-template-columns: auto auto auto;
+  }
+
+  .mini-card-wrapper {
+    /* max-width: 150px; */
+    
+  }
+}
+
+@media only screen and (max-width: 1239px) {
+  .mini-cards-wrapper {
+
+    grid-template-columns: auto auto;
+  }
+
+  .mini-card-wrapper {
+    /* max-width: 150px; */
+    
+  }
+}
+
+@media only screen and (max-width: 944px) {
+  .mini-cards-wrapper {
+    grid-template-columns: auto;
+  }
+
+  .mini-card-wrapper {
+    width: 800px;
+    height: 800px;
+  }
+
+  .mini-card-body {
+    justify-content: center;
+    align-items: center;
+  }
+  .mini-card-title{
+    font-size:1rem;
+  }
+}
+
+}
 `;
-const MovieList: React.FC<MovieListProps> = ({ movies }: MovieListProps) => {
+const MovieList: React.FC<MovieListProps> = ({ movies ,onPageChange}: MovieListProps) => {
   useEffect(() => {
-    console.log(movies);
+   console.log(movies);
+   
   }, [movies]);
 
   const genreList = [
@@ -155,7 +233,7 @@ const MovieList: React.FC<MovieListProps> = ({ movies }: MovieListProps) => {
   return (
     <MovieListStyle>
       <div className="card-container-big">
-        <div className="card-big">
+       {movies?.results[1]?.backdrop_path && <div className="card-big">
           <div className="image-background">
             <Image
               width={"100"}
@@ -174,8 +252,8 @@ const MovieList: React.FC<MovieListProps> = ({ movies }: MovieListProps) => {
             <span className="material-symbols-outlined">play_circle</span>
             <span>Let Play Moview</span>
           </div>
-        </div>
-        <div className="card-big">
+        </div>}
+        {movies?.results[0]?.backdrop_path && <div className="card-big">
           <div className="image-background">
             <Image
               width={"100"}
@@ -194,7 +272,7 @@ const MovieList: React.FC<MovieListProps> = ({ movies }: MovieListProps) => {
             <span className="material-symbols-outlined">play_circle</span>
             <span>Let Play Moview</span>
           </div>
-        </div>
+        </div>}
       </div>
       {/* End of Main Cards */}
       <div className="genre-wrapper">
@@ -209,11 +287,13 @@ const MovieList: React.FC<MovieListProps> = ({ movies }: MovieListProps) => {
       </div>
       {/* End of genre */}
       <>
-      <h3>All Movies</h3>
+        <h3 className="all-movies-titles">All Movies</h3>
         <div className="mini-cards-wrapper">
-          {movies?.results.map((data: any) => {
+       
+          {movies && movies?.results.map((data: any) => {
             const year = data.release_date.slice(0, 4);
             return (
+              <Link key={data.id} href={`/pages/dashboard/movie-details/${data.id}`}>
               <div className="mini-card-wrapper">
                 <div className="image-background-wrapper">
                   <div className="image-background">
@@ -238,10 +318,13 @@ const MovieList: React.FC<MovieListProps> = ({ movies }: MovieListProps) => {
                   </div>
                 </div>
               </div>
+              </Link>
             );
           })}
         </div>
+        <Paginator results={movies?.results} total_pages={movies?.total_pages} total_results={movies?.total_results} onPageChange={onPageChange}/>
       </>
+      {/* End of mini cards */}
     </MovieListStyle>
   );
 };

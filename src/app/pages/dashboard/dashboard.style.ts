@@ -1,17 +1,22 @@
 import styled from "styled-components";
 
 const dashboard = styled.div`
-
-
-  .wrapper{
-   max-width: calc(100% - 200px);
-   min-height: 1200px;
-   border-radius: 10px;
-   margin: 50px auto;
-   background-color:#b7b7b7c8;
- 
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    max-width: calc(100% - 100px);
+    min-height: 1200px;
+    border-radius: 10px;
+    margin: 50px auto;
+    background-color: #b7b7b7c8;
   }
- 
+
+  @media (max-width: 600px) {
+    .wrapper {
+      background-color: #b7b7b7c8;
+      margin: 0!important;
+    }
+  }
 `;
 
 export default dashboard;
