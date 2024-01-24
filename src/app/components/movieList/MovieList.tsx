@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Image from "next/image";
 import Paginator from "../paginator/paginator";
 import Link from "next/link";
-import {Response} from "../../interfaces/Response"
+import { Response } from "../../interfaces/Response";
 
 interface MovieListProps {
   movies: Response | undefined;
@@ -80,8 +80,8 @@ export const MovieListStyle = styled.div`
   }
   .mini-cards-wrapper {
     display: grid;
-   grid-template-columns: repeat(6, 1fr); 
-   place-items: center;
+    grid-template-columns: repeat(6, 1fr);
+    place-items: center;
     overflow: hidden;
     grid-gap: 0px;
   }
@@ -130,66 +130,60 @@ export const MovieListStyle = styled.div`
     margin: 0 20px;
   }
 
-@media only screen and (max-width: 2500px) {
-  .mini-cards-wrapper {
+  @media only screen and (max-width: 2500px) {
+    .mini-cards-wrapper {
+      grid-template-columns: auto auto auto auto;
+    }
 
-    grid-template-columns: auto auto auto auto;
+    .mini-card-wrapper {
+      /* max-width: 150px; */
+    }
+
+    @media only screen and (max-width: 1600px) {
+      .mini-cards-wrapper {
+        grid-template-columns: auto auto auto;
+      }
+
+      .mini-card-wrapper {
+        /* max-width: 150px; */
+      }
+    }
+
+    @media only screen and (max-width: 1239px) {
+      .mini-cards-wrapper {
+        grid-template-columns: auto auto;
+      }
+
+      .mini-card-wrapper {
+        /* max-width: 150px; */
+      }
+    }
+
+    @media only screen and (max-width: 944px) {
+      .mini-cards-wrapper {
+        grid-template-columns: auto;
+      }
+
+      .mini-card-wrapper {
+        width: 800px;
+        height: 800px;
+      }
+
+      .mini-card-body {
+        justify-content: center;
+        align-items: center;
+      }
+      .mini-card-title {
+        font-size: 1rem;
+      }
+    }
   }
-
-  .mini-card-wrapper {
-    /* max-width: 150px; */
-    
-  }
-
-  @media only screen and (max-width: 1600px) {
-  .mini-cards-wrapper {
-
-    grid-template-columns: auto auto auto;
-  }
-
-  .mini-card-wrapper {
-    /* max-width: 150px; */
-    
-  }
-}
-
-@media only screen and (max-width: 1239px) {
-  .mini-cards-wrapper {
-
-    grid-template-columns: auto auto;
-  }
-
-  .mini-card-wrapper {
-    /* max-width: 150px; */
-    
-  }
-}
-
-@media only screen and (max-width: 944px) {
-  .mini-cards-wrapper {
-    grid-template-columns: auto;
-  }
-
-  .mini-card-wrapper {
-    width: 800px;
-    height: 800px;
-  }
-
-  .mini-card-body {
-    justify-content: center;
-    align-items: center;
-  }
-  .mini-card-title{
-    font-size:1rem;
-  }
-}
-
-}
 `;
-const MovieList: React.FC<MovieListProps> = ({ movies ,onPageChange}: MovieListProps) => {
-  useEffect(() => {
-   
-  }, [movies]);
+const MovieList: React.FC<MovieListProps> = ({
+  movies,
+  onPageChange,
+}: MovieListProps) => {
+  useEffect(() => {}, [movies]);
 
   const genreList = [
     {
@@ -232,52 +226,56 @@ const MovieList: React.FC<MovieListProps> = ({ movies ,onPageChange}: MovieListP
   return (
     <MovieListStyle>
       <div className="card-container-big">
-       {movies?.results[1]?.backdrop_path && <div className="card-big">
-          <div className="image-background">
-            <Image
-              width={"100"}
-              height={"100"}
-              unoptimized
-              src={
-                "https://image.tmdb.org/t/p/w500" +
-                movies?.results[1]?.backdrop_path
-              }
-              alt=""
-            />
-          </div>
-          <h3 className="card-title"> {movies?.results[1]?.title}</h3>
+        {movies?.results[1]?.backdrop_path && (
+          <div className="card-big">
+            <div className="image-background">
+              <Image
+                width={"100"}
+                height={"100"}
+                unoptimized
+                src={
+                  "https://image.tmdb.org/t/p/w500" +
+                  movies?.results[1]?.backdrop_path
+                }
+                alt=""
+              />
+            </div>
+            <h3 className="card-title"> {movies?.results[1]?.title}</h3>
 
-          <div className="play">
-            <span className="material-symbols-outlined">play_circle</span>
-            <span>Let Play Moview</span>
+            <div className="play">
+              <span className="material-symbols-outlined">play_circle</span>
+              <span>Let Play Moview</span>
+            </div>
           </div>
-        </div>}
-        {movies?.results[0]?.backdrop_path && <div className="card-big">
-          <div className="image-background">
-            <Image
-              width={"100"}
-              height={"100"}
-              unoptimized
-              src={
-                "https://image.tmdb.org/t/p/w500" +
-                movies?.results[0]?.backdrop_path
-              }
-              alt=""
-            />
-          </div>
-          <h3 className="card-title"> {movies?.results[0]?.title}</h3>
+        )}
+        {movies?.results[0]?.backdrop_path && (
+          <div className="card-big">
+            <div className="image-background">
+              <Image
+                width={"100"}
+                height={"100"}
+                unoptimized
+                src={
+                  "https://image.tmdb.org/t/p/w500" +
+                  movies?.results[0]?.backdrop_path
+                }
+                alt=""
+              />
+            </div>
+            <h3 className="card-title"> {movies?.results[0]?.title}</h3>
 
-          <div className="play">
-            <span className="material-symbols-outlined">play_circle</span>
-            <span>Let Play Moview</span>
+            <div className="play">
+              <span className="material-symbols-outlined">play_circle</span>
+              <span>Let Play Moview</span>
+            </div>
           </div>
-        </div>}
+        )}
       </div>
       {/* End of Main Cards */}
       <div className="genre-wrapper">
         {genreList.map((data) => {
           return (
-            <div className="genre-items">
+            <div  key={data.genre} className="genre-items">
               <span className={data.class}>{data.text}</span>
               <span className="genre-text">{data.genre}</span>
             </div>
@@ -288,40 +286,49 @@ const MovieList: React.FC<MovieListProps> = ({ movies ,onPageChange}: MovieListP
       <>
         <h3 className="all-movies-titles">All Movies</h3>
         <div className="mini-cards-wrapper">
-       
-          {movies && movies?.results.map((data: any) => {
-            const year = data.release_date.slice(0, 4);
-            return (
-              <Link key={data.id} href={`/pages/dashboard/movie-details/${data.id}`}>
-              <div className="mini-card-wrapper">
-                <div className="image-background-wrapper">
-                  <div className="image-background">
-                    <Image
-                      width={"100"}
-                      height={"100"}
-                      unoptimized
-                      src={
-                        "https://image.tmdb.org/t/p/w500" + data?.backdrop_path
-                      }
-                      alt=""
-                    />
+          {movies &&
+            movies?.results.map((data: any) => {
+              const year = data.release_date.slice(0, 4);
+              return (
+                <Link
+                  key={data.id}
+                  href={`/pages/dashboard/movie-details/${data.id}`}
+                >
+                  <div className="mini-card-wrapper">
+                    <div className="image-background-wrapper">
+                      <div className="image-background">
+                        <Image
+                          width={"100"}
+                          height={"100"}
+                          unoptimized
+                          src={
+                            "https://image.tmdb.org/t/p/w500" +
+                            data?.backdrop_path
+                          }
+                          alt=""
+                        />
+                      </div>
+                    </div>
+                    <div className="mini-card-body">
+                      <div className="mini-card-title">{data?.title}</div>
+                      <div className="mini-card-info">
+                        <span className="material-symbols-outlined bg-color">
+                          star
+                        </span>
+                        <span className="year">{year}</span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div className="mini-card-body">
-                  <div className="mini-card-title">{data?.title}</div>
-                  <div className="mini-card-info">
-                    <span className="material-symbols-outlined bg-color">
-                      star
-                    </span>
-                    <span className="year">{year}</span>
-                  </div>
-                </div>
-              </div>
-              </Link>
-            );
-          })}
+                </Link>
+              );
+            })}
         </div>
-        <Paginator results={movies?.results} total_pages={movies?.total_pages} total_results={movies?.total_results} onPageChange={onPageChange}/>
+        <Paginator
+          results={movies?.results}
+          total_pages={movies?.total_pages}
+          total_results={movies?.total_results}
+          onPageChange={onPageChange}
+        />
       </>
       {/* End of mini cards */}
     </MovieListStyle>

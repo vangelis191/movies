@@ -48,7 +48,7 @@ export const GlobalHeaderStyle = styled.div`
   }
 
   @media (max-width: 600px) {
-    a {
+    .logo-wrapper {
       position: relative;
      left: 350px;
     }
@@ -64,9 +64,9 @@ const GlobalHeader: React.FC<GlobalHeaderProps> = ({ setSearchQuery }) => {
     <GlobalHeaderStyle>
       <div className="flex-wrapper">
         <Link href="/">
-          <a>
+          <div className="logo-wrapper">
             <span className="material-symbols-outlined logo">home</span>
-          </a>{" "}
+          </div>{" "}
         </Link>
         <SearchBar setSearchQuery={setSearchQuery} />
         <div className="profile">

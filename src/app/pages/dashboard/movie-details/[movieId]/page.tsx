@@ -7,7 +7,7 @@ import styled from "styled-components";
 import Link from "next/link";
 
 export const MovieDetailStyle = styled.div`
-  a {
+  .logo-wrapper {
     background-color: white;
   }
   .logo {
@@ -153,11 +153,12 @@ const MovieDetail = ({ params }: { params: { movieId: String } }) => {
 
   return (
     <MovieDetailStyle>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
       <div className="card-wrapper">
         <Link href="/">
-          <a>
+          <div className="logo-wrapper">
             <span className="material-symbols-outlined logo">home</span>
-          </a>{" "}
+          </div>{" "}
         </Link>
         <div className="image-background">
           <Image
