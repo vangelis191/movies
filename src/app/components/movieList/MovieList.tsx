@@ -8,6 +8,7 @@ import { Response } from "../../interfaces/Response";
 interface MovieListProps {
   movies: Response | undefined;
   onPageChange: (newPage: number) => void;
+  searchQuery:string
 }
 
 export const MovieListStyle = styled.div`
@@ -233,7 +234,9 @@ export const MovieListStyle = styled.div`
 const MovieList: React.FC<MovieListProps> = ({
   movies,
   onPageChange,
+  searchQuery
 }: MovieListProps) => {
+
   useEffect(() => {}, [movies]);
 
   const genreList = [
@@ -375,6 +378,7 @@ const MovieList: React.FC<MovieListProps> = ({
             })}
         </div>
         <Paginator
+          searchQuery={searchQuery}
           results={movies?.results}
           total_pages={movies?.total_pages}
           total_results={movies?.total_results}

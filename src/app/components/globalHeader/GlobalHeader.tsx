@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SearchBar from "../searchBar/SearchBar";
 import styled from "styled-components";
 import Image from "next/image";
@@ -60,6 +60,7 @@ interface GlobalHeaderProps {
 }
 
 const GlobalHeader: React.FC<GlobalHeaderProps> = ({ setSearchQuery }) => {
+
   return (
     <GlobalHeaderStyle>
       <div className="flex-wrapper">

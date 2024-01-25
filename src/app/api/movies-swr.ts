@@ -27,11 +27,11 @@ export const useAllMovies = (page = 1) => {
 };
 
 export const useSearchMovies = (search:string, id:number) => {
+ 
   const { data, error } = useSWR(
     `https://api.themoviedb.org/3/search/movie?language=en-US&page=${id}&query=${search}`,
     fetcher
-  );
-
+  );  
   return {
     searchMoviesData: data,
     isLoadingSearch: !error && !data,

@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import styled from "styled-components";
 import {IMovie} from "../../interfaces/Response"
 interface MoviesProps {
+  searchQuery:string
   results:IMovie[] | undefined
   total_pages:number | any
   total_results:number | undefined
@@ -56,7 +57,7 @@ export const PaginatorStyle= styled.div`
 `;
 
 
-const Paginator: React.FC<MoviesProps> = ({ total_pages,results,onPageChange }: MoviesProps) => {
+const Paginator: React.FC<MoviesProps> = ({ searchQuery,total_pages,results,onPageChange }: MoviesProps) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   if(results?.length){
@@ -67,8 +68,8 @@ const Paginator: React.FC<MoviesProps> = ({ total_pages,results,onPageChange }: 
 
 
   useEffect(() => {
-       
-  }, [currentPage]);
+    setCurrentPage(1)
+  }, [searchQuery]);
 
   
 
