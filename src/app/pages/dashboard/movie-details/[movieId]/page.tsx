@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import styled from "styled-components";
 import Link from "next/link";
+import { useMovieById } from "@/app/api/movies-swr";
 
 export const MovieDetailStyle = styled.div`
   .logo-wrapper {
@@ -137,19 +138,8 @@ export const MovieDetailStyle = styled.div`
 `;
 
 const MovieDetail = ({ params }: { params: { movieId: String } }) => {
-  const [movie, setMovie] = useState<IMovie>();
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const moviesData = await getMovieById(params?.movieId as string);
-        setMovie(moviesData);
 
-      } catch (error) {
-        console.error("Error fetching movies:", error);
-      }
-    };
-    fetchData();
-  }, [movie]);
+  const { movie, isLoading, isError } = useMovieById(params?.movieId as string);
 
   return (
     <MovieDetailStyle>
