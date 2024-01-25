@@ -77,6 +77,8 @@ export const MovieListStyle = styled.div`
     border-radius: 10px;
     margin: 0 0 20px 0;
     overflow: hidden;
+    align-items: center;
+    justify-content: center;
   }
   .mini-cards-wrapper {
     display: grid;
@@ -140,12 +142,19 @@ export const MovieListStyle = styled.div`
     }
 
     @media only screen and (max-width: 1600px) {
+      .genre-wrapper {
+        gap: 20px;
+      }
+
       .mini-cards-wrapper {
         grid-template-columns: auto auto auto;
       }
-
-      .mini-card-wrapper {
-        /* max-width: 150px; */
+    }
+    @media only screen and (max-width: 1400px) {
+      .genre-items {
+        padding: 10px 30px;
+        overflow: hidden;
+        gap: 5px;
       }
     }
 
@@ -153,13 +162,37 @@ export const MovieListStyle = styled.div`
       .mini-cards-wrapper {
         grid-template-columns: auto auto;
       }
+    }
 
-      .mini-card-wrapper {
-        /* max-width: 150px; */
+    @media only screen and (max-width: 1170px) {
+      .genre-items {
+        padding: 10px 20px;
+        overflow: hidden;
+        gap: 5px;
+      }
+    }
+
+    @media only screen and (max-width: 1000px) {
+      .genre-wrapper {
+        display: grid;
+        grid-template-columns: auto auto auto auto auto;
+        place-items: center;
       }
     }
 
     @media only screen and (max-width: 944px) {
+      .genre-wrapper {
+        display: grid;
+        grid-template-columns: auto auto auto auto;
+        margin-left: 100px;
+      }
+
+      .genre-items {
+        padding: 5px 5px;
+        overflow: hidden;
+        gap: 5px;
+      }
+
       .mini-cards-wrapper {
         grid-template-columns: auto;
       }
@@ -175,6 +208,24 @@ export const MovieListStyle = styled.div`
       }
       .mini-card-title {
         font-size: 1rem;
+      }
+    }
+
+    @media only screen and (max-width: 600px) {
+      .genre-wrapper {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        margin-left: 100px;
+      }
+
+      .genre-items {
+        padding: 10px 15px;
+        overflow: hidden;
+        gap: 5px;
+      }
+
+      .genre-text{
+        font-size:13px;
       }
     }
   }
@@ -275,7 +326,7 @@ const MovieList: React.FC<MovieListProps> = ({
       <div className="genre-wrapper">
         {genreList.map((data) => {
           return (
-            <div  key={data.genre} className="genre-items">
+            <div key={data.genre} className="genre-items">
               <span className={data.class}>{data.text}</span>
               <span className="genre-text">{data.genre}</span>
             </div>
