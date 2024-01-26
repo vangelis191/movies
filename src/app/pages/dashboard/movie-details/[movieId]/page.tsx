@@ -140,7 +140,8 @@ export const MovieDetailStyle = styled.div`
 const MovieDetail = ({ params }: { params: { movieId: String } }) => {
 
   const { movie, isLoading, isError } = useMovieById(params?.movieId as string);
-
+  console.log(isError);
+  
   return (
     <MovieDetailStyle>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />

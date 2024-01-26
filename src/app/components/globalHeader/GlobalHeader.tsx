@@ -45,6 +45,11 @@ export const GlobalHeaderStyle = styled.div`
       position: relative;
      left: 250px;
     }
+
+    .profile {
+     position: relative;
+     right:100px;
+  }
   }
 
   @media (max-width: 600px) {
@@ -52,6 +57,16 @@ export const GlobalHeaderStyle = styled.div`
       position: relative;
      left: 350px;
     }
+    .profile {
+
+     right:450px;
+  }
+  }
+  @media (max-width: 500px) {
+  
+    .profile {
+     right:500px;
+  }
   }
 `;
 
