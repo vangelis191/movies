@@ -17,6 +17,7 @@ export default function DashboardPage() {
   
   const { searchMoviesData, isLoadingSearch, isErrorSearch  } = useSearchMovies(searchQuery, page)
 
+
   const handlePageChange = (newPage: number) => {
     setPage(newPage);
   };

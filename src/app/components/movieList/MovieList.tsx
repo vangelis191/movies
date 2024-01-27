@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Response } from "../../interfaces/Response";
 
 interface MovieListProps {
-  movies: Response | undefined;
+  movies: Response | null;
   onPageChange: (newPage: number) => void;
   searchQuery:string
 }

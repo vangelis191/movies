@@ -140,7 +140,6 @@ export const MovieDetailStyle = styled.div`
 const MovieDetail = ({ params }: { params: { movieId: String } }) => {
 
   const { movie, isLoading, isError } = useMovieById(params?.movieId as string);
-  console.log(isError);
   
   return (
     <MovieDetailStyle>
