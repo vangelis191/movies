@@ -46,12 +46,12 @@ export const PaginatorStyle= styled.div`
 
 @media only screen and (max-width: 938px) {
   .paginator-wrapper{
-    margin-right: 400px;
+    margin-right: 300px;
   }
 }
 @media only screen and (max-width: 744px) {
   .paginator-wrapper{
-    margin-right: 600px;
+    margin-right: 300px;
   }
 }
 `;

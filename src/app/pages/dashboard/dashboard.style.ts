@@ -4,7 +4,7 @@ const dashboard = styled.div`
   .wrapper {
     display: flex;
     flex-direction: column;
-    max-width: calc(100% - 100px);
+    max-width: calc(100%);
     min-height: 1200px;
     border-radius: 10px;
     margin: 50px auto;

@@ -36,7 +36,7 @@ export const GlobalHeaderStyle = styled.div`
 
     @media (max-width: 600px) {
     .search-container {
-     left: 70px;
+     left: 0px;
     }
   }
 

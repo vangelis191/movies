@@ -43,29 +43,22 @@ export const GlobalHeaderStyle = styled.div`
   @media (max-width: 1530px) {
     a {
       position: relative;
-     left: 250px;
+     left: 200px;
     }
 
     .profile {
      position: relative;
      right:100px;
   }
+  .profile {
+     right:150px;
+  }
   }
 
-  @media (max-width: 600px) {
-    .logo-wrapper {
-      position: relative;
-     left: 350px;
-    }
-    .profile {
-
-     right:450px;
-  }
-  }
   @media (max-width: 500px) {
   
     .profile {
-     right:500px;
+     right:200px;
   }
   }
 `;

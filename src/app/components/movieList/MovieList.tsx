@@ -150,6 +150,12 @@ export const MovieListStyle = styled.div`
       .mini-cards-wrapper {
         grid-template-columns: auto auto auto;
       }
+
+
+  .card-big {
+    width: 600px;
+
+  }
     }
     @media only screen and (max-width: 1400px) {
       .genre-items {
@@ -163,6 +169,11 @@ export const MovieListStyle = styled.div`
       .mini-cards-wrapper {
         grid-template-columns: auto auto;
       }
+
+      .card-big {
+    width: 500px;
+
+  }
     }
 
     @media only screen and (max-width: 1170px) {
@@ -179,9 +190,21 @@ export const MovieListStyle = styled.div`
         grid-template-columns: auto auto auto auto auto;
         place-items: center;
       }
+
+      .card-big {
+       width: 400px;
+
+      }
     }
 
     @media only screen and (max-width: 944px) {
+      .card-big {
+       width: 300px;
+      }
+
+      .card-title{
+        font-size: 2rem;
+      }
       .genre-wrapper {
         display: grid;
         grid-template-columns: auto auto auto auto;
@@ -213,17 +236,25 @@ export const MovieListStyle = styled.div`
     }
 
     @media only screen and (max-width: 600px) {
+      .card-big {
+       width: 180px;
+       height: 200px;
+      }
+
+      .card-title{
+        font-size: 1rem;
+      }
+
       .genre-wrapper {
         display: grid;
         grid-template-columns: auto auto auto;
-        margin-left: 100px;
+        margin-left: 10px;
       }
 
       .genre-items {
         padding: 10px 15px;
         overflow: hidden;
-        gap: 5px;
-      }
+        gap: 5px;      }
 
       .genre-text{
         font-size:13px;
