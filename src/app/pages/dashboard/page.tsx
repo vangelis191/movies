@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 import DashboardStyle from "./dashboard.style";
 import GlobalHeader from "@/app/components/globalHeader/GlobalHeader";
 import { useAllMovies, useSearchMovies } from "@/app/api/movies-swr";
+import { log } from "console";
+import { GetStaticProps } from "next";
 
 export default function DashboardPage() {
 
@@ -20,6 +22,17 @@ export default function DashboardPage() {
 
   const handlePageChange = (newPage: number) => {
     setPage(newPage);
+  };
+
+   const getStaticProps: GetStaticProps = async () => {
+  
+    return {
+      props: {
+        movies,
+        searchMoviesData
+
+      },
+    };
   };
 
   
